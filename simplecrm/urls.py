@@ -29,7 +29,7 @@ from reminder import views as rviews
 from simplecrm import Register_login as Reg
 from simplecrm import ingestexcel as ingex
 from simplecrm import get_column_name as getxcol
-
+from campaign import views as campview
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('register/', Reg.register, name='register'),  # Endpoint for user registration
@@ -49,6 +49,8 @@ urlpatterns = [
     path('reminders/', rviews.ReminderListAPIView.as_view(), name='reminder-list'),
     path('uploadexcel/', ingex.ImportLeadData, name='excel'),
     path('excel-column/', getxcol.get_excel_columns, name='column_excel'),
+    path('campaign/', campview.CampaignViewSet.as_view(), name='campaigns'),
+     path('campaign/<int:pk>', campview.CampaignDetailAPIView.as_view(), name='campaigns'),
 
 
 ]
